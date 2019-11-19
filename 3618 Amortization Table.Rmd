@@ -1,0 +1,31 @@
+---
+title: "3618 Amortization Table"
+author: "VERONICA LESLIE, ADELADE KANYONGO"
+date: "November 19, 2019"
+output: html_document
+---
+```{r}
+# Creating an amortization table to repay a loan of 200000 over 10 years using monthly payments
+n <- 10
+L <- 200000
+i <- 0.03
+# converting from yearly interest rate to monthly
+monthly_rate <- (1+i)^(1/12)-1
+# Calculating the number of payments
+No_periods <- n*12
+#Determining payment size using annuity immediate formula
+Payment_Size <- (L * monthly_rate)/(1-(1+monthly_rate)^(-No_periods))
+# Creating amortization table using the 'for' loop
+amortization_table <- matrix(c(0, 0, L),nrow=1, ncol=3)
+for(time in 1:No_periods){
+  Interest_Paid <- (amortization_table[ time, 3 ])*(monthly_rate)
+  Principal_Repaid <- Payment_Size-Interest_Paid
+  Outstanding_Balance <- amortization_table[ time, 3 ] - Principal_Repaid
+  row <- c(Interest_Paid, Principal_Repaid, Outstanding_Balance)
+  amortization_table <- rbind(amortization_table, row)
+}
+colnames(amortization_table) <- c("Interest Paid", "Principal Repaid", "Outstanding Balance")
+#Displaying results
+rownames(amortization_table) <- c("start", 1:No_periods)
+print(amortization_table)
+```
