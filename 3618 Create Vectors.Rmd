@@ -1,0 +1,14 @@
+---
+title: "3618 Create Vectors"
+author: "VERONICA LESLIE, ADELADE KANYONGO"
+date: "November 19, 2019"
+output: html_document
+---
+
+```{r}
+cells <- c(2,5,12,30,35,42)
+colname <- c("Gummy", "Jelly Beans","Rock Candy","Asian Candy","Bubble Gum","Candy Bars")
+rowname <- c("Zombie", "Vampire")
+y <- matrix(cells, nrow=2, ncol=6, byrow=TRUE, dimnames=list(rowname, colname))
+y
+```
