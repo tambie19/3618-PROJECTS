@@ -5,7 +5,7 @@ Output : html_document
 
 
 ```{r}
-# Creating a bond amortization table to repay a loan of 10000 over 10 years using monthly payments
+# Creating a bond amortization table to repay a bond of 10000 over 10 years using semi annual payments
 n <- 10
 C <- 10000
 r <- 0.06 
